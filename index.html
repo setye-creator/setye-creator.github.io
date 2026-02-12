@@ -196,6 +196,17 @@
             
             <p class="happy-valentines">Happy Valentine's Day</p>
         </div>
+        
+        <!-- Optional: Click to pause music -->
+        <button class="music-button" onclick="toggleMusic()" id="musicButton">
+            Pause Music
+        </button>
+        
+        <!-- Hidden audio element -->
+        <audio id="bgMusic" loop autoplay>
+            <source src="always.mp3" type="audio/mpeg">
+        </audio>
+    </div>
 
     <!-- Easter Egg Page (click Sam's name anywhere) -->
     <div id="easterEgg" class="easter-egg hidden">
