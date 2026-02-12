@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 Will You Be My Valentine?</title>
+    
+    <!-- Google Fonts - Hand-drawn style fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Indie+Flower&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating hearts cursor trail -->
+    <div id="cursor-hearts"></div>
+
+    <!-- PAGE 1: LOADING PAGE -->
+    <div id="page1" class="page active">
+        <div class="doodle-container">
+            <h1 class="doodle-title wobble">Loading Love...</h1>
+            
+            <!-- Hand-drawn loading bar -->
+            <div class="loading-bar-container">
+                <div class="loading-bar" id="loadingBar"></div>
+                <div class="loading-percentage" id="loadingPercent">0%</div>
+            </div>
+            
+            <p class="loading-text" id="loadingText">Almost there...</p>
+            
+            <!-- Error message (hidden initially) -->
+            <div id="errorMessage" class="error-box hidden">
+                <div class="broken-heart">💔</div>
+                <h2 class="error-title shake">404: Valentine Not Found</h2>
+                <p class="error-subtitle">Critical Error: Sam's heart is empty!</p>
+                <button class="doodle-button" onclick="fixError()">
+                    <span>Assign Myself 😌</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Doodle decorations -->
+        <div class="doodle-heart" style="top: 10%; left: 15%;"></div>
+        <div class="doodle-star" style="top: 20%; right: 20%;"></div>
+        <div class="doodle-arrow" style="bottom: 15%; left: 10%;"></div>
+    </div>
+
+    <!-- PAGE 2: 100 LOVE NOTES -->
+    <div id="page2" class="page">
+        <div class="doodle-container">
+            <h1 class="doodle-title">Connection Lost 💔</h1>
+            <p class="subtitle">To restore connection, please acknowledge the following love notes...</p>
+            
+            <!-- Progress bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">Connection Restored: 0% ❤️</div>
+            </div>
+            
+            <!-- Love notes list -->
+            <div class="love-notes-container" id="loveNotesContainer">
+                <!-- This will be populated by JavaScript -->
+            </div>
+            
+            <!-- Signature area (appears at the end) -->
+            <div id="signatureArea" class="signature-area hidden">
+                <p class="signature-prompt">Sign your name to continue:</p>
+                <input type="text" id="signatureInput" class="signature-input" placeholder="Ananya" required>
+                <button class="doodle-button" onclick="goToPage(3)">
+                    <span>Continue</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 3: EVIDENCE & CONFIRMATION -->
+    <div id="page3" class="page">
+        <div class="doodle-container">
+            <h1 class="doodle-title">Legal Love Agreement 📜</h1>
+            <p class="subtitle">Your signature has been recorded...</p>
+            
+            <div class="evidence-box">
+                <div class="evidence-item">✓ Name: <span id="displayName">Ananya</span></div>
+                <div class="evidence-item">✓ Date: February 14, 2026</div>
+                <div class="evidence-item">✓ Acknowledged: All of the above</div>
+                <div class="evidence-item">✓ Status: Binding forever</div>
+            </div>
+            
+            <button class="doodle-button" onclick="confirmLove()">
+                <span>Confirm Love Agreement</span>
+            </button>
+            
+            <!-- System messages (appear one by one) -->
+            <div id="systemMessages" class="system-messages hidden">
+                <div class="system-msg">→ Saving proof for future arguments...</div>
+                <div class="system-msg">→ Uploading to Sam's heart...</div>
+                <div class="system-msg">→ Backing up forever...</div>
+                <div class="system-msg shake-computer">→ Error: Too much love detected!</div>
+            </div>
+            
+            <div id="screenshotPrompt" class="screenshot-prompt hidden">
+                <p class="big-text">📸 Screenshot this.</p>
+                <p class="small-text">I will use it later 😏</p>
+                <button class="doodle-button" onclick="goToPage(4)">
+                    <span>Continue to Game →</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Shaking computer doodle -->
+        <div class="doodle-computer" id="doodleComputer">
+            💻
+        </div>
+    </div>
+
+    <!-- PAGE 4: HEARTS & HEARTBREAKS GAME -->
+    <div id="page4" class="page">
+        <div class="doodle-container">
+            <h1 class="doodle-title">Hearts & Heartbreaks 💕</h1>
+            <p class="subtitle">A game you absolutely cannot lose...</p>
+            
+            <!-- Tic-tac-toe board -->
+            <div class="game-board" id="gameBoard">
+                <div class="game-cell" onclick="playerMove(0)"></div>
+                <div class="game-cell" onclick="playerMove(1)"></div>
+                <div class="game-cell" onclick="playerMove(2)"></div>
+                <div class="game-cell" onclick="playerMove(3)"></div>
+                <div class="game-cell" onclick="playerMove(4)"></div>
+                <div class="game-cell" onclick="playerMove(5)"></div>
+                <div class="game-cell" onclick="playerMove(6)"></div>
+                <div class="game-cell" onclick="playerMove(7)"></div>
+                <div class="game-cell" onclick="playerMove(8)"></div>
+            </div>
+            
+            <div class="game-status" id="gameStatus">You are ❤️ | Sam is 💔</div>
+            
+            <button class="doodle-button small" onclick="resetGame()">
+                <span>Reset Game</span>
+            </button>
+            
+            <!-- Win message -->
+            <div id="winMessage" class="win-message hidden">
+                <h2 class="celebration">🎉 YOU WON SAM'S HEART 🎉</h2>
+                <button class="doodle-button" onclick="goToPage(5)">
+                    <span>Claim Your Prize →</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 5: VALENTINE QUESTION -->
+    <div id="page5" class="page">
+        <div class="doodle-container center">
+            <h1 class="huge-question glow">Will you be my Valentine?</h1>
+            
+            <div class="button-container">
+                <button class="doodle-button yes-button" onclick="sayYes()">
+                    <span>Yes ❤️</span>
+                </button>
+                <button class="doodle-button no-button" id="noButton">
+                    <span>No 💔</span>
+                </button>
+            </div>
+            
+            <p class="hint" id="hint"></p>
+        </div>
+        
+        <!-- Hearts burst (hidden initially) -->
+        <div id="heartsBurst" class="hearts-burst hidden"></div>
+    </div>
+
+    <!-- PAGE 6: FINAL LOVE PAGE -->
+    <div id="page6" class="page">
+        <div class="doodle-container center">
+            <div class="photo-frame">
+                <!-- REPLACE THIS IMAGE URL with your photo! -->
+                <img src="https://via.placeholder.com/400x400/ffb3ba/000000?text=Add+Your+Photo+Here" alt="Us ❤️" class="couple-photo">
+                <div class="frame-hearts">
+                    <span class="floating-heart">❤️</span>
+                    <span class="floating-heart">💕</span>
+                    <span class="floating-heart">💖</span>
+                    <span class="floating-heart">💗</span>
+                    <span class="floating-heart">💓</span>
+                </div>
+            </div>
+            
+            <h1 class="final-title">My Favorite Person Forever</h1>
+            <p class="final-message">I choose you. Every time.</p>
+            
+            <div class="signature">
+                <p>— Sam</p>
+            </div>
+            
+            <p class="happy-valentines">Happy Valentine's Day</p>
+        </div>
+        
+        <!-- Optional: Click to pause music -->
+        <button class="music-button" onclick="toggleMusic()" id="musicButton">
+            Pause Music
+        </button>
+        
+        <!-- Hidden audio element -->
+        <audio id="bgMusic" loop autoplay>
+            <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_2c4d3f3cd8.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Easter Egg Page (click Sam's name anywhere) -->
+    <div id="easterEgg" class="easter-egg hidden">
+        <div class="easter-content">
+            <h2>You found the secret! 🎉</h2>
+            <p>Sam spent way too much time making this website perfect for you ❤️</p>
+            <button class="doodle-button" onclick="closeEasterEgg()">
+                <span>Aww, that's sweet! →</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

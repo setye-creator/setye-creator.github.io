@@ -1,0 +1,930 @@
+/* ================================
+   DOODLE LOVE VALENTINE STYLES
+   Hand-drawn, playful, romantic
+   ================================ */
+
+/* ===== ROOT VARIABLES ===== */
+:root {
+    /* Pastel color palette */
+    --pink: #ffb3ba;
+    --cream: #fff5e4;
+    --red: #ff6b9d;
+    --lavender: #c7b8ea;
+    --light-pink: #ffc2d1;
+    --dark-pink: #ff85a1;
+    
+    /* Fonts */
+    --font-hand: 'Patrick Hand', cursive;
+    --font-indie: 'Indie Flower', cursive;
+}
+
+/* ===== GLOBAL STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-hand);
+    background: linear-gradient(135deg, var(--cream) 0%, var(--light-pink) 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><text y="15" font-size="20">❤️</text></svg>'), auto;
+}
+
+/* ===== PAGE MANAGEMENT ===== */
+.page {
+    display: none;
+    min-height: 100vh;
+    padding: 40px 20px;
+    position: relative;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.page.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== DOODLE CONTAINER ===== */
+.doodle-container {
+    background: white;
+    border-radius: 30px;
+    padding: 50px 40px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 
+        8px 8px 0px var(--pink),
+        8px 8px 0px 2px var(--red);
+    border: 3px solid #333;
+    position: relative;
+    /* Hand-drawn border effect */
+    border-style: dashed;
+    animation: containerWobble 3s ease-in-out infinite;
+}
+
+@keyframes containerWobble {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(0.5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-0.5deg); }
+}
+
+.doodle-container.center {
+    text-align: center;
+}
+
+/* ===== TYPOGRAPHY ===== */
+.doodle-title {
+    font-family: var(--font-indie);
+    font-size: 3rem;
+    color: var(--red);
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 3px 3px 0px var(--pink);
+    position: relative;
+}
+
+.wobble {
+    animation: wobble 2s ease-in-out infinite;
+}
+
+@keyframes wobble {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* ===== DOODLE BUTTONS ===== */
+.doodle-button {
+    font-family: var(--font-hand);
+    font-size: 1.3rem;
+    background: var(--pink);
+    color: #333;
+    border: 3px solid #333;
+    border-radius: 50px;
+    padding: 15px 40px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 5px 5px 0px var(--red);
+    margin: 10px;
+}
+
+.doodle-button:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0px var(--red);
+    background: var(--light-pink);
+}
+
+.doodle-button:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0px 0px 0px var(--red);
+}
+
+.doodle-button span {
+    position: relative;
+    z-index: 2;
+}
+
+.doodle-button.small {
+    font-size: 1rem;
+    padding: 10px 25px;
+}
+
+/* ===== PAGE 1: LOADING ===== */
+.loading-bar-container {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background: white;
+    border: 3px solid #333;
+    border-radius: 20px;
+    margin: 30px 0;
+    overflow: hidden;
+}
+
+.loading-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--pink), var(--red));
+    border-radius: 20px;
+    width: 0%;
+    transition: width 0.5s ease;
+    position: relative;
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: -100% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.loading-percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-indie);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    z-index: 2;
+}
+
+.loading-text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 20px;
+}
+
+.error-box {
+    margin-top: 40px;
+    padding: 30px;
+    background: var(--cream);
+    border: 3px dashed var(--red);
+    border-radius: 20px;
+    text-align: center;
+}
+
+.error-box.hidden {
+    display: none;
+}
+
+.broken-heart {
+    font-size: 4rem;
+    animation: heartBreak 1s ease-in-out;
+}
+
+@keyframes heartBreak {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3) rotate(10deg); }
+    100% { transform: scale(1); }
+}
+
+.error-title {
+    font-family: var(--font-indie);
+    font-size: 2rem;
+    color: var(--red);
+    margin: 20px 0 10px 0;
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.error-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* ===== DOODLE DECORATIONS ===== */
+.doodle-heart,
+.doodle-star,
+.doodle-arrow {
+    position: absolute;
+    font-size: 3rem;
+    animation: float 3s ease-in-out infinite;
+    opacity: 0.3;
+}
+
+.doodle-heart::before {
+    content: '❤️';
+}
+
+.doodle-star::before {
+    content: '✨';
+}
+
+.doodle-arrow::before {
+    content: '💘';
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+/* ===== PAGE 2: LOVE NOTES ===== */
+.progress-container {
+    margin: 30px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 30px;
+    background: white;
+    border: 3px solid #333;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--lavender), var(--red));
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 15px;
+}
+
+.progress-text {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    font-weight: bold;
+    color: var(--red);
+}
+
+.love-notes-container {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 20px;
+    background: var(--cream);
+    border-radius: 15px;
+    border: 2px dashed var(--pink);
+    margin: 20px 0;
+}
+
+/* Custom scrollbar */
+.love-notes-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.love-notes-container::-webkit-scrollbar-track {
+    background: var(--cream);
+    border-radius: 10px;
+}
+
+.love-notes-container::-webkit-scrollbar-thumb {
+    background: var(--pink);
+    border-radius: 10px;
+    border: 2px solid var(--cream);
+}
+
+.love-note-item {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    font-size: 1.1rem;
+    color: #333;
+    opacity: 0;
+    animation: fadeInNote 0.5s ease forwards;
+}
+
+@keyframes fadeInNote {
+    to { opacity: 1; }
+}
+
+.love-checkbox {
+    width: 25px;
+    height: 25px;
+    border: 3px solid #333;
+    border-radius: 50%;
+    margin-right: 15px;
+    flex-shrink: 0;
+    position: relative;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.love-checkbox.checked {
+    background: var(--red);
+    animation: checkPop 0.3s ease;
+}
+
+.love-checkbox.checked::after {
+    content: '❤️';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.9rem;
+}
+
+@keyframes checkPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* Special styling for the last note */
+.special-note {
+    margin-top: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    border: 3px solid var(--red);
+}
+
+.special-note span {
+    font-family: var(--font-indie);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--red);
+}
+
+/* MASSIVE TEXT - removed since we're not using it anymore */
+
+/* SIGNATURE AREA */
+.signature-area {
+    margin-top: 30px;
+    padding: 30px;
+    background: white;
+    border: 3px dashed var(--lavender);
+    border-radius: 20px;
+    text-align: center;
+}
+
+.signature-area.hidden {
+    display: none;
+}
+
+.signature-prompt {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.signature-input {
+    font-family: var(--font-indie);
+    font-size: 1.5rem;
+    padding: 15px;
+    width: 100%;
+    max-width: 400px;
+    border: 3px solid #333;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+    background: var(--cream);
+}
+
+.signature-input:focus {
+    outline: none;
+    border-color: var(--red);
+    box-shadow: 0 0 10px var(--pink);
+}
+
+/* ===== PAGE 3: EVIDENCE ===== */
+.evidence-box {
+    background: var(--cream);
+    padding: 30px;
+    border-radius: 20px;
+    border: 3px solid #333;
+    margin: 30px 0;
+}
+
+.evidence-item {
+    font-size: 1.2rem;
+    margin: 15px 0;
+    color: #333;
+    padding-left: 10px;
+    border-left: 4px solid var(--red);
+}
+
+.evidence-item span {
+    font-weight: bold;
+    color: var(--red);
+}
+
+.system-messages {
+    margin-top: 30px;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 15px;
+    font-family: 'Courier New', monospace;
+    color: #00ff00;
+}
+
+.system-messages.hidden {
+    display: none;
+}
+
+.system-msg {
+    margin: 10px 0;
+    opacity: 0;
+    animation: typeIn 0.5s ease forwards;
+}
+
+@keyframes typeIn {
+    to { opacity: 1; }
+}
+
+.system-msg:nth-child(1) { animation-delay: 0.5s; }
+.system-msg:nth-child(2) { animation-delay: 1.5s; }
+.system-msg:nth-child(3) { animation-delay: 2.5s; }
+.system-msg:nth-child(4) { animation-delay: 3.5s; }
+
+.shake-computer {
+    color: #ff0000 !important;
+    animation: shake 0.3s ease-in-out infinite;
+}
+
+.screenshot-prompt {
+    text-align: center;
+    margin-top: 30px;
+    padding: 30px;
+    background: var(--light-pink);
+    border-radius: 20px;
+    border: 3px dashed var(--red);
+}
+
+.screenshot-prompt.hidden {
+    display: none;
+}
+
+.big-text {
+    font-family: var(--font-indie);
+    font-size: 2.5rem;
+    color: var(--red);
+    margin-bottom: 10px;
+}
+
+.small-text {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.doodle-computer {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 4rem;
+    animation: computerShake 0.5s ease-in-out;
+    display: none;
+}
+
+.doodle-computer.shaking {
+    display: block;
+    animation: shake 0.2s ease-in-out infinite;
+}
+
+@keyframes computerShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+}
+
+/* ===== PAGE 4: GAME ===== */
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 400px;
+    margin: 30px auto;
+}
+
+.game-cell {
+    aspect-ratio: 1;
+    background: white;
+    border: 4px solid #333;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.game-cell:hover {
+    background: var(--cream);
+    transform: scale(1.05);
+}
+
+.game-cell::before {
+    content: attr(data-symbol);
+}
+
+.game-status {
+    text-align: center;
+    font-size: 1.3rem;
+    margin: 20px 0;
+    color: #555;
+}
+
+.win-message {
+    text-align: center;
+    margin-top: 30px;
+    padding: 40px;
+    background: var(--light-pink);
+    border-radius: 30px;
+    border: 5px solid var(--red);
+}
+
+.win-message.hidden {
+    display: none;
+}
+
+.celebration {
+    font-family: var(--font-indie);
+    font-size: 2.5rem;
+    color: var(--red);
+    margin-bottom: 20px;
+    animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* ===== PAGE 5: VALENTINE QUESTION ===== */
+.huge-question {
+    font-family: var(--font-indie);
+    font-size: 3.5rem;
+    color: var(--red);
+    margin-bottom: 50px;
+    line-height: 1.3;
+}
+
+.glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { 
+        text-shadow: 0 0 10px var(--pink),
+                     0 0 20px var(--pink),
+                     0 0 30px var(--pink);
+    }
+    50% { 
+        text-shadow: 0 0 20px var(--red),
+                     0 0 30px var(--red),
+                     0 0 40px var(--red);
+    }
+}
+
+.button-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.yes-button {
+    background: var(--red);
+    color: white;
+    font-size: 1.8rem;
+    padding: 20px 50px;
+    box-shadow: 8px 8px 0px var(--dark-pink);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.yes-button:hover {
+    background: var(--dark-pink);
+    transform: scale(1.1);
+}
+
+.no-button {
+    background: #ddd;
+    color: #666;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.no-button.shrinking {
+    animation: shrink 2s ease forwards;
+}
+
+@keyframes shrink {
+    to { 
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+.hint {
+    margin-top: 30px;
+    font-size: 1.2rem;
+    color: #999;
+    font-style: italic;
+    min-height: 30px;
+}
+
+/* Hearts burst effect */
+.hearts-burst {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.hearts-burst.hidden {
+    display: none;
+}
+
+.burst-heart {
+    position: absolute;
+    font-size: 3rem;
+    animation: burstUp 2s ease-out forwards;
+}
+
+@keyframes burstUp {
+    0% {
+        transform: translateY(0) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-1000px) scale(1);
+        opacity: 0;
+    }
+}
+
+/* ===== PAGE 6: FINAL LOVE ===== */
+.photo-frame {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto 40px auto;
+    padding: 20px;
+    background: white;
+    border: 5px solid #333;
+    border-radius: 20px;
+    box-shadow: 10px 10px 0px var(--pink);
+    transform: rotate(-2deg);
+    transition: transform 0.3s ease;
+}
+
+.photo-frame:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.couple-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+}
+
+.frame-hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 2rem;
+    animation: floatAround 4s ease-in-out infinite;
+}
+
+.floating-heart:nth-child(1) {
+    top: -10px;
+    left: -10px;
+    animation-delay: 0s;
+}
+
+.floating-heart:nth-child(2) {
+    top: -10px;
+    right: -10px;
+    animation-delay: 0.5s;
+}
+
+.floating-heart:nth-child(3) {
+    bottom: -10px;
+    left: -10px;
+    animation-delay: 1s;
+}
+
+.floating-heart:nth-child(4) {
+    bottom: -10px;
+    right: -10px;
+    animation-delay: 1.5s;
+}
+
+.floating-heart:nth-child(5) {
+    top: 50%;
+    left: -20px;
+    animation-delay: 2s;
+}
+
+@keyframes floatAround {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+.final-title {
+    font-family: var(--font-indie);
+    font-size: 2.5rem;
+    color: var(--red);
+    margin-bottom: 20px;
+}
+
+.final-message {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.signature {
+    font-family: var(--font-indie);
+    font-size: 2rem;
+    color: #333;
+    margin: 30px 0;
+}
+
+.happy-valentines {
+    font-family: var(--font-indie);
+    font-size: 1.8rem;
+    color: var(--lavender);
+    margin-top: 40px;
+}
+
+.music-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--pink);
+    border: 3px solid #333;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 5px 5px 0px var(--red);
+}
+
+.music-button:hover {
+    transform: scale(1.1);
+}
+
+/* ===== EASTER EGG ===== */
+.easter-egg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.easter-egg.hidden {
+    display: none;
+}
+
+.easter-content {
+    background: white;
+    padding: 50px;
+    border-radius: 30px;
+    border: 5px solid var(--red);
+    text-align: center;
+    max-width: 500px;
+    animation: popIn 0.5s ease;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.easter-content h2 {
+    font-family: var(--font-indie);
+    font-size: 2rem;
+    color: var(--red);
+    margin-bottom: 20px;
+}
+
+.easter-content p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* ===== CURSOR HEARTS ===== */
+#cursor-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+}
+
+.cursor-heart {
+    position: absolute;
+    font-size: 1.5rem;
+    pointer-events: none;
+    animation: cursorHeartFloat 2s ease-out forwards;
+}
+
+@keyframes cursorHeartFloat {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(0);
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .doodle-title {
+        font-size: 2rem;
+    }
+    
+    .huge-question {
+        font-size: 2.5rem;
+    }
+    
+    .doodle-container {
+        padding: 30px 20px;
+    }
+    
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .massive-text {
+        font-size: 2.5rem;
+        padding: 20px;
+    }
+}
+
+/* ===== HIDDEN UTILITY ===== */
+.hidden {
+    display: none !important;
+}
